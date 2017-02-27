@@ -70,12 +70,12 @@ class HCURLShortenerController extends HCBaseController
      * @param null $data
      * @return mixed
      */
-    protected function __create($data = null)
+    protected function __create(array $data = null)
     {
         if (is_null($data))
             $data = $this->getInputData();
 
-        return generateHCShortURL(array_get($data, 'record.url'), true);
+        return generateHCShortURL(array_get($data, 'record.url'),array_get($data, 'record.description'), true);
     }
 
     /**
@@ -84,7 +84,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $id
      * @return mixed
      */
-    protected function __update($id)
+    protected function __update(string $id)
     {
         $record = HCShortURL::findOrFail($id);
 
@@ -186,6 +186,7 @@ class HCURLShortenerController extends HCBaseController
         $_data = request()->all();
 
         array_set($data, 'record.url', array_get($_data, 'url'));
+        array_set($data, 'record.description', array_get($_data, 'description'));
 
         return $data;
     }
@@ -196,7 +197,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $id
      * @return mixed
      */
-    public function getSingleRecord($id)
+    public function getSingleRecord(string $id)
     {
         $with = [];
 
@@ -216,7 +217,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $shortURLKey
      * @return Redirect
      */
-    public function redirect($shortURLKey)
+    public function redirect(string $shortURLKey)
     {
         $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 

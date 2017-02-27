@@ -18,6 +18,6 @@ class HCShortURL extends HCUuidModel
      *
      * @var array
      */
-    protected $fillable = ['id', 'url', 'short_url_key', 'clicks'];
+    protected $fillable = ['id', 'url', 'short_url_key', 'description', 'clicks'];
 
 }

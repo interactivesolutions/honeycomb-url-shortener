@@ -36,9 +36,10 @@ class HCURLShortenerForm
                     "requiredVisible" => 1,
                 ],
                 [
-                    "type"            => "richTextArea",
-                    "fieldID"         => "description",
-                    "label"           => trans("HCURLShortener::url_shortener.description"),
+                    "type"    => "textArea",
+                    "fieldID" => "description",
+                    "label"   => trans("HCURLShortener::url_shortener.description"),
+                    "rows"    => 5,
                 ]
             ],
         ];
