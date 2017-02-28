@@ -7,11 +7,12 @@ if (!function_exists('generateHCShortURL'))
     /**
      * Generating short url
      *
-     * @param $url
+     * @param string $url
+     * @param string $description
      * @param bool $full return only short url or full db object
      * @return mixed
      */
-    function generateHCShortURL (string $url, string $description, bool $full = false)
+    function generateHCShortURL (string $url, string $description = null, bool $full = false)
     {
         $unique = false;
         while (!$unique)
