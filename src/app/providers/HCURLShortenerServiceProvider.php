@@ -1,6 +1,6 @@
 <?php
 
-namespace interactivesolutions\honeycomburlshortener\providers;
+namespace interactivesolutions\honeycomburlshortener\app\providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,7 @@ class HCURLShortenerServiceProvider extends ServiceProvider
      */
     protected $commands = [];
 
-    protected $namespace = 'interactivesolutions\honeycomburlshortener\http\controllers';
+    protected $namespace = 'interactivesolutions\honeycomburlshortener\app\http\controllers';
 
     /**
      * Bootstrap the application services.

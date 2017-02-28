@@ -3,7 +3,7 @@
         "serviceProviderNameSpace": "HCURLShortener"
     },
     "formData": {
-        "url-shortener": "interactivesolutions\\honeycomburlshortener\\forms\\HCURLShortenerForm"
+        "url-shortener": "interactivesolutions\\honeycomburlshortener\\app\\forms\\HCURLShortenerForm"
     },
     "adminMenu": [
         {
@@ -17,7 +17,7 @@
         "permissions": [
             {
                 "name": "admin.url.shortener",
-                "controller": "interactivesolutions\\honeycomburlshortener\\http\\controllers\\HCURLShortenerController",
+                "controller": "interactivesolutions\\honeycomburlshortener\\app\\http\\controllers\\HCURLShortenerController",
                 "actions": [
                     "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
                     "interactivesolutions_honeycomb_url_shortener_url_shortener_create",

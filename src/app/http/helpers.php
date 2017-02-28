@@ -1,6 +1,6 @@
 <?php
 
-use interactivesolutions\honeycomburlshortener\models\HCShortURL;
+use interactivesolutions\honeycomburlshortener\app\models\HCShortURL;
 
 if (!function_exists('generateHCShortURL'))
 {

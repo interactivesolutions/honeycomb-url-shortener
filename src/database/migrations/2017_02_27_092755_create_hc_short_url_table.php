@@ -19,7 +19,7 @@ class CreateHcShortUrlTable extends Migration {
 			$table->string('url', 768);
 			$table->string('short_url_key', 768);
 			$table->integer('clicks');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});

@@ -1,6 +1,6 @@
 <?php
 
-namespace interactivesolutions\honeycomburlshortener\forms;
+namespace interactivesolutions\honeycomburlshortener\app\forms;
 
 class HCURLShortenerForm
 {

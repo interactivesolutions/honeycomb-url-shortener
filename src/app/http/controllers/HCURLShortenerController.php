@@ -1,10 +1,10 @@
-<?php namespace interactivesolutions\honeycomburlshortener\http\controllers;
+<?php namespace interactivesolutions\honeycomburlshortener\app\http\controllers;
 
 use DB;
 use Illuminate\Database\Eloquent\Builder;
 use interactivesolutions\honeycombcore\http\controllers\HCBaseController;
-use interactivesolutions\honeycomburlshortener\models\HCShortURL;
-use interactivesolutions\honeycomburlshortener\validators\HCURLShortenerValidator;
+use interactivesolutions\honeycomburlshortener\app\models\HCShortURL;
+use interactivesolutions\honeycomburlshortener\app\validators\HCURLShortenerValidator;
 
 class HCURLShortenerController extends HCBaseController
 {
