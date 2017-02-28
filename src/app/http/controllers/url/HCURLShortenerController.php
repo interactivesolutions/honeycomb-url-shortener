@@ -1,6 +1,7 @@
 <?php namespace interactivesolutions\honeycomburlshortener\http\controllers;
 
 use DB;
+use Illuminate\Database\Eloquent\Builder;
 use interactivesolutions\honeycombcore\http\controllers\HCBaseController;
 use interactivesolutions\honeycomburlshortener\models\HCShortURL;
 use interactivesolutions\honeycomburlshortener\validators\HCURLShortenerValidator;
@@ -20,7 +21,7 @@ class HCURLShortenerController extends HCBaseController
             'listURL'     => route('admin.api.url.shortener'),
             'newFormUrl'  => route('admin.api.form-manager', ['url-shortener-new']),
             'editFormUrl' => route('admin.api.form-manager', ['url-shortener-edit']),
-        //    'imagesUrl'   => route('resource.get', ['/']),
+            //    'imagesUrl'   => route('resource.get', ['/']),
             'headers'     => $this->getAdminListHeader(),
         ];
 
@@ -75,7 +76,7 @@ class HCURLShortenerController extends HCBaseController
         if (is_null($data))
             $data = $this->getInputData();
 
-        return generateHCShortURL(array_get($data, 'record.url'),array_get($data, 'record.description'), true);
+        return generateHCShortURL(array_get($data, 'record.url'), array_get($data, 'record.description'), true);
     }
 
     /**
@@ -159,7 +160,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $list
      * @return mixed
      */
-    protected function listSearch($list)
+    protected function listSearch(Builder $list)
     {
         if (request()->has('q')) {
             $parameter = request()->input('q');
