@@ -12,7 +12,7 @@ class HCURLShortenerValidator extends HCCoreFormValidator
     protected function rules()
     {
         return [
-            'url' => 'numeric|required',
+            'url' => 'required',
         ];
     }
 }
