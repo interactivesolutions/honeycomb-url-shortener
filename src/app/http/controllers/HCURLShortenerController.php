@@ -164,7 +164,7 @@ class HCURLShortenerController extends HCBaseController
      * Creating data list
      * @return mixed
      */
-    public function listData()
+    public function pageData()
     {
         return $this->createQuery()->paginate($this->recordsPerPage);
     }
@@ -180,6 +180,15 @@ class HCURLShortenerController extends HCBaseController
 
         //TODO set limit to start search
 
+        return $this->list();
+    }
+
+    /**
+     * Creating data list
+     * @return mixed
+     */
+    public function list()
+    {
         return $this->createQuery()->get();
     }
 
