@@ -21,9 +21,9 @@
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.3.*",
-        "interactivesolutions/honeycomb-core": "*",
-        "interactivesolutions/honeycomb-core-ui": "*",
-        "interactivesolutions/honeycomb-acl": "*"
+        "interactivesolutions/honeycomb-core": "dev-master",
+        "interactivesolutions/honeycomb-core-ui": "dev-master",
+        "interactivesolutions/honeycomb-acl": "dev-master"
     },
     "autoload": {
         "psr-4": {
