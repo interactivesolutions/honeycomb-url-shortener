@@ -1,9 +1,22 @@
 {
     "name": "interactivesolutions/honeycomb-url-shortener",
-    "description": "",
-    "keywords": [],
+    "description": "HoneyComb CMS package responsable for url shortening",
+    "keywords": ["honeycomb", "honey", "laravel", "url", "url-shortener", "shortener", "short", "shorturl"],
     "license": "MIT",
-    "authors": [],
+    "authors": [
+        {
+        "name": "Mantas Gelčius",
+        "email": "mantas.gelcius@gmail.com"
+        },
+        {
+            "name": "Liutauras Kavaliauskas",
+            "email": "liutauraskav@gmail.com"
+        },
+        {
+            "name": "Jevgenij Dmitrijev",
+            "email": "jd@interactivesolutions.lt"
+        }
+    ],
     "repositories": [],
     "require": {
         "php": ">=7.0.0",
@@ -16,3 +29,4 @@
     },
     "minimum-stability": "dev"
 }
+
