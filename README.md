@@ -7,5 +7,5 @@ This is part of HoneyComb CMS package.
 
 It will not work alone.
 
-You can find it in:
+Please use:
 https://github.com/interactivesolutions/honeycomb-cms
