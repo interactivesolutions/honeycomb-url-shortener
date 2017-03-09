@@ -25,9 +25,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function ()
 });
 
 Route::get('r/{shortKeyURL}', ['as' => 'url.shortener', 'uses' => 'HCURLShortenerController@redirect']);
-
-Route::get('/', function ()
-{
-    echo generateHCShortURL('https://www.google.lt/search?q=http+slug+icon&biw=1920&bih=950&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjZuv_Z86_SAhWBHpoKHb_iDvQQ_AUIBigB');
-});
-
