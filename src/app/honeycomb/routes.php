@@ -1,13 +1,12 @@
 <?php
 
-//packages/interactivesolutions/honeycomb-url-shortener/src/app/routes/routes.url.shortener.php
+//interactivesolutions/honeycomb-url-shortener/src/app/routes/routes.url.shortener.php
 
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function ()
-{
+
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function () {
     Route::get('url-shortener', ['as' => 'admin.url.shortener', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@adminView']);
 
-    Route::group(['prefix' => 'api'], function ()
-    {
+    Route::group(['prefix' => 'api'], function () {
         Route::get('url-shortener', ['as' => 'admin.api.url.shortener', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@pageData']);
         Route::get('url-shortener/list', ['as' => 'admin.api.url.shortener.list', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@list']);
         Route::get('url-shortener/search', ['as' => 'admin.api.url.shortener.search', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@search']);
@@ -25,3 +24,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function ()
 });
 
 Route::get('r/{shortKeyURL}', ['as' => 'url.shortener', 'uses' => 'HCURLShortenerController@redirect']);
+
