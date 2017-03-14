@@ -24,6 +24,13 @@
                     "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
                     "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
                     "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
+                ],
+                "actionsApps": [
+                    "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
+                    "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
+                    "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
+                    "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
+                    "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
                 ]
             }
         ],
