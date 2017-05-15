@@ -32,24 +32,3 @@ if (!function_exists('generateHCShortURL'))
         return route('url.shortener', [$record->short_url_key]);
     }
 }
-
-if (!function_exists('isCreatedHCShortURL'))
-{
-    /**
-     * Check if URL is already existing
-     *
-     * @param string $url
-     * @return bool
-     */
-    function isCreatedHCShortURL (string $url)
-    {
-        //TODO improve logic in case some URL will also will end with SHORT_URL_LENGTH last segment
-        $shortURLKey = substr($url, -env('SHORT_URL_LENGTH', 5));
-        $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
-
-        if (!$record)
-            return false;
-
-        return true;
-    }
-}
