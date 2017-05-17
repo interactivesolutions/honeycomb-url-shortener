@@ -14,7 +14,7 @@ class HCURLShortenerController extends HCBaseController
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function adminView()
+    public function adminIndex()
     {
         $config = [
             'title'       => trans('HCURLShortener::url_shortener.page_title'),
@@ -25,15 +25,15 @@ class HCURLShortenerController extends HCBaseController
             'headers'     => $this->getAdminListHeader(),
         ];
 
-        if ($this->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_create'))
+        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_create'))
             $config['actions'][] = 'new';
 
-        if ($this->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_update')) {
+        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_update')) {
             $config['actions'][] = 'update';
             $config['actions'][] = 'restore';
         }
 
-        if ($this->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_delete'))
+        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_delete'))
             $config['actions'][] = 'delete';
 
         $config['actions'][] = 'search';
@@ -71,7 +71,7 @@ class HCURLShortenerController extends HCBaseController
      * @param null $data
      * @return mixed
      */
-    protected function __create(array $data = null)
+    protected function __apiStore(array $data = null)
     {
         if (is_null($data))
             $data = $this->getInputData();
@@ -85,7 +85,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $id
      * @return mixed
      */
-    protected function __update(string $id)
+    protected function __apiUpdate(string $id)
     {
         $record = HCShortURL::findOrFail($id);
 
@@ -93,7 +93,7 @@ class HCURLShortenerController extends HCBaseController
 
         $record->update(array_get($data, 'record'));
 
-        return $this->getSingleRecord($record->id);
+        return $this->apiShow($record->id);
     }
 
     /**
@@ -102,7 +102,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $list
      * @return mixed|void
      */
-    protected function __delete(array $list)
+    protected function __apiDestroy(array $list)
     {
         HCShortURL::destroy($list);
     }
@@ -113,7 +113,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $list
      * @return mixed|void
      */
-    protected function __forceDelete(array $list)
+    protected function __apiForceDelete(array $list)
     {
         HCShortURL::onlyTrashed()->whereIn('id', $list)->forceDelete();
     }
@@ -124,7 +124,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $list
      * @return mixed|void
      */
-    protected function __restore(array $list)
+    protected function __apiRestore(array $list)
     {
         HCShortURL::whereIn('id', $list)->restore();
     }
@@ -135,7 +135,7 @@ class HCURLShortenerController extends HCBaseController
      * @param array $select
      * @return mixed
      */
-    public function createQuery(array $select = null)
+    protected function createQuery(array $select = null)
     {
         $with = [];
 
@@ -152,7 +152,7 @@ class HCURLShortenerController extends HCBaseController
         $list = $this->checkForDeleted($list);
 
         // add search items
-        $list = $this->listSearch($list);
+        $list = $this->search($list);
 
         // ordering data
         $list = $this->orderData($list, $select);
@@ -205,7 +205,7 @@ class HCURLShortenerController extends HCBaseController
      * @param $id
      * @return mixed
      */
-    public function getSingleRecord(string $id)
+    public function apiShow(string $id)
     {
         $with = [];
 
