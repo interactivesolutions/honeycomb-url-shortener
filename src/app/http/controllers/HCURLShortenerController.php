@@ -160,26 +160,20 @@ class HCURLShortenerController extends HCBaseController
         return $list;
     }
 
-
-
     /**
      * List search elements
-     * @param $list
-     * @return mixed
+     * @param Builder $query
+     * @param string $phrase
+     * @return Builder
      */
-    protected function listSearch(Builder $list)
+    protected function searchQuery(Builder $query, string $phrase)
     {
-        if (request()->has('q')) {
-            $parameter = request()->input('q');
-
-            $list = $list->where(function ($query) use ($parameter) {
-                $query->where('url', 'LIKE', '%' . $parameter . '%')
-                    ->orWhere('short_url_key', 'LIKE', '%' . $parameter . '%')
-                    ->orWhere('clicks', 'LIKE', '%' . $parameter . '%');
+        return $query->where (function (Builder $query) use ($phrase) {
+            $query->where('url', 'LIKE', '%' . $phrase . '%')
+                    ->orWhere('short_url_key', 'LIKE', '%' . $phrase . '%')
+                    ->orWhere('clicks', 'LIKE', '%' . $phrase . '%')
+                    ->orWhere('url', 'LIKE', '%' . $phrase . '%');
             });
-        }
-
-        return $list;
     }
 
     /**
