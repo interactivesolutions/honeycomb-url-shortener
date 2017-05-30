@@ -23,7 +23,7 @@ class HCURLShortenerForm
             'buttons'    => [
                 [
                     "class" => "col-centered",
-                    "label" => trans('HCCoreUI::core.button.submit'),
+                    "label" => trans('HCTranslations::core.buttons.submit'),
                     "type"  => "submit",
                 ],
             ],
