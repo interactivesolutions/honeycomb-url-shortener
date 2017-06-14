@@ -17,7 +17,7 @@ if (!function_exists('generateHCShortURL'))
         $unique = false;
         while (!$unique)
         {
-            $shortURLKey = str_random(env('SHORT_URL_LENGTH', 5));
+            $shortURLKey = str_random(config('hc.short_url_length'));
             $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 
             if (!$record)
@@ -44,7 +44,7 @@ if (!function_exists('isCreatedHCShortURL'))
     function isCreatedHCShortURL (string $url)
     {
         //TODO improve logic in case some URL will also will end with SHORT_URL_LENGTH last segment
-        $shortURLKey = substr($url, -env('SHORT_URL_LENGTH', 5));
+        $shortURLKey = substr($url, -config('hc.short_url_length'));
         $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 
         if (!$record)
