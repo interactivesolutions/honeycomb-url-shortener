@@ -2,7 +2,7 @@
 
 Route::group(['prefix' => config('hc.admin_url'), 'middleware' => ['web', 'auth']], function ()
 {
-    Route::get('url-shortener', ['as' => 'admin.url.shortener', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@adminIndex']);
+    Route::get('url-shortener', ['as' => 'admin.url.shortener.index', 'middleware' => ['acl:interactivesolutions_honeycomb_url_shortener_url_shortener_list'], 'uses' => 'HCURLShortenerController@adminIndex']);
 
     Route::group(['prefix' => 'api/url-shortener'], function ()
     {

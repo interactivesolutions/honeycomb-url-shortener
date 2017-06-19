@@ -8,6 +8,8 @@
     "adminMenu": [
         {
             "path": "admin\/url-shortener",
+            "route": "admin.url.shortener.index",
+            "parent": "admin/hc",
             "translation": "HCURLShortener::url_shortener.page_title",
             "icon": "",
             "aclPermission": "interactivesolutions_honeycomb_url_shortener_url_shortener_list"
