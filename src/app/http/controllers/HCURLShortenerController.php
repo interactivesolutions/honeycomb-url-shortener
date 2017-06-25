@@ -100,33 +100,39 @@ class HCURLShortenerController extends HCBaseController
      * Delete records table
      *
      * @param $list
-     * @return mixed|void
+     * @return mixed
      */
     protected function __apiDestroy(array $list)
     {
         HCShortURL::destroy($list);
+
+        return hcSuccess();
     }
 
     /**
      * Delete records table
      *
      * @param $list
-     * @return mixed|void
+     * @return mixed
      */
     protected function __apiForceDelete(array $list)
     {
         HCShortURL::onlyTrashed()->whereIn('id', $list)->forceDelete();
+
+        return hcSuccess();
     }
 
     /**
      * Restore multiple records
      *
      * @param $list
-     * @return mixed|void
+     * @return mixed
      */
     protected function __apiRestore(array $list)
     {
         HCShortURL::whereIn('id', $list)->restore();
+
+        return hcSuccess();
     }
 
     /**
