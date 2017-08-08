@@ -232,7 +232,7 @@ class HCURLShortenerController extends HCBaseController
         if (!$record)
             abort(404);
 
-        DB::table(HCShortURL::getTableName())->where('short_url_key', $shortURLKey)->increment('clicks');
+        $record->increment('clicks');
 
         return redirect($record->url);
     }
