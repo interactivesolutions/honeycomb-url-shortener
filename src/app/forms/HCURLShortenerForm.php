@@ -20,35 +20,37 @@ class HCURLShortenerForm
     {
         $form = [
             'storageURL' => route('admin.api.url.shortener'),
-            'buttons'    => [
+            'buttons' => [
                 [
                     "class" => "col-centered",
                     "label" => trans('HCTranslations::core.buttons.submit'),
-                    "type"  => "submit",
+                    "type" => "submit",
                 ],
             ],
-            'structure'  => [
+            'structure' => [
                 [
-                    "type"            => "singleLine",
-                    "fieldID"         => "url",
-                    "label"           => trans("HCURLShortener::url_shortener.url"),
-                    "required"        => 1,
+                    "type" => "singleLine",
+                    "fieldID" => "url",
+                    "label" => trans("HCURLShortener::url_shortener.url"),
+                    "required" => 1,
                     "requiredVisible" => 1,
                 ],
                 [
-                    "type"    => "textArea",
+                    "type" => "textArea",
                     "fieldID" => "description",
-                    "label"   => trans("HCURLShortener::url_shortener.description"),
-                    "rows"    => 5,
-                ]
+                    "label" => trans("HCURLShortener::url_shortener.description"),
+                    "rows" => 5,
+                ],
             ],
         ];
 
-        if ($this->multiLanguage)
-            $form['availableLanguages'] = []; //TOTO implement honeycomb-languages package
+        if ($this->multiLanguage) {
+            $form['availableLanguages'] = [];
+        } //TOTO implement honeycomb-languages package
 
-        if (!$edit)
+        if (!$edit) {
             return $form;
+        }
 
         //Make changes to edit form if needed
         // $form['structure'][] = [];

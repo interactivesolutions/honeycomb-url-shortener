@@ -2,7 +2,8 @@
 
 namespace interactivesolutions\honeycomburlshortener\app\models;
 
-use interactivesolutions\honeycombcore\models\HCUuidModel;
+
+use InteractiveSolutions\HoneycombCore\Models\HCUuidModel;
 
 class HCShortURL extends HCUuidModel
 {

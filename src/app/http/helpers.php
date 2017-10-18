@@ -2,8 +2,7 @@
 
 use interactivesolutions\honeycomburlshortener\app\models\HCShortURL;
 
-if (!function_exists('generateHCShortURL'))
-{
+if (!function_exists('generateHCShortURL')) {
     /**
      * Generating short url
      *
@@ -12,43 +11,49 @@ if (!function_exists('generateHCShortURL'))
      * @param bool $full return only short url or full db object
      * @return mixed
      */
-    function generateHCShortURL (string $url, string $description = null, bool $full = false)
+    function generateHCShortURL(string $url, string $description = null, bool $full = false)
     {
         $unique = false;
-        while (!$unique)
-        {
+        while (!$unique) {
             $shortURLKey = str_random(config('hc.short_url_length'));
             $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 
-            if (!$record)
+            if (!$record) {
                 $unique = true;
+            }
         }
 
-        $record = HCShortURL::create(['url' => $url, 'short_url_key' => $shortURLKey,'description' => $description ,'clicks' => 0]);
+        $record = HCShortURL::create([
+            'url' => $url,
+            'short_url_key' => $shortURLKey,
+            'description' => $description,
+            'clicks' => 0,
+        ]);
 
-        if ($full)
+        if ($full) {
             return $record;
+        }
 
         return route('url.shortener', [$record->short_url_key]);
     }
 }
 
-if (!function_exists('isCreatedHCShortURL'))
-{
+if (!function_exists('isCreatedHCShortURL')) {
     /**
      * Check if URL is already existing
      *
      * @param string $url
      * @return bool
      */
-    function isCreatedHCShortURL (string $url)
+    function isCreatedHCShortURL(string $url)
     {
         //TODO improve logic in case some URL will also will end with SHORT_URL_LENGTH last segment
         $shortURLKey = substr($url, -config('hc.short_url_length'));
         $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 
-        if (!$record)
+        if (!$record) {
             return false;
+        }
 
         return true;
     }

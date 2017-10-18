@@ -1,6 +1,7 @@
 <?php namespace interactivesolutions\honeycomburlshortener\app\validators;
 
-use interactivesolutions\honeycombcore\http\controllers\HCCoreFormValidator;
+
+use InteractiveSolutions\HoneycombCore\Http\Controllers\HCCoreFormValidator;
 
 class HCURLShortenerValidator extends HCCoreFormValidator
 {

@@ -1,4 +1,5 @@
 <?php
+
 namespace interactivesolutions\honeycomburlshortener\database\seeds;
 
 use Illuminate\Database\Seeder;

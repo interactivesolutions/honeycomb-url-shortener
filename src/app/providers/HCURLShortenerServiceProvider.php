@@ -2,7 +2,8 @@
 
 namespace interactivesolutions\honeycomburlshortener\app\providers;
 
-use interactivesolutions\honeycombcore\providers\HCBaseServiceProvider;
+
+use InteractiveSolutions\HoneycombCore\Providers\HCBaseServiceProvider;
 
 class HCURLShortenerServiceProvider extends HCBaseServiceProvider
 {

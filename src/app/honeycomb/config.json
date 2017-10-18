@@ -1,47 +1,47 @@
 {
-    "general": {
-        "serviceProviderNameSpace": "HCURLShortener"
-    },
-    "formData": {
-        "url-shortener": "interactivesolutions\\honeycomburlshortener\\app\\forms\\HCURLShortenerForm"
-    },
-    "adminMenu": [
-        {
-            "route": "admin.url.shortener.index",
-            "parent": "admin.index",
-            "translation": "HCURLShortener::url_shortener.page_title",
-            "icon": "",
-            "aclPermission": "interactivesolutions_honeycomb_url_shortener_url_shortener_list"
-        }
-    ],
-    "acl": {
-        "permissions": [
-            {
-                "name": "admin.url.shortener",
-                "controller": "interactivesolutions\\honeycomburlshortener\\app\\http\\controllers\\HCURLShortenerController",
-                "actions": [
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
-                ],
-                "actionsApps": [
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
-                    "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
-                ]
-            }
-        ],
-        "rolesActions": {
-            "project-admin": [
-                "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
-                "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
-                "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
-                "interactivesolutions_honeycomb_url_shortener_url_shortener_delete"
-            ]
-        }
+  "general": {
+    "serviceProviderNameSpace": "HCURLShortener"
+  },
+  "formData": {
+    "url-shortener": "interactivesolutions\\honeycomburlshortener\\app\\forms\\HCURLShortenerForm"
+  },
+  "adminMenu": [
+    {
+      "route": "admin.url.shortener.index",
+      "parent": "admin.index",
+      "translation": "HCURLShortener::url_shortener.page_title",
+      "icon": "",
+      "aclPermission": "interactivesolutions_honeycomb_url_shortener_url_shortener_list"
     }
+  ],
+  "acl": {
+    "permissions": [
+      {
+        "name": "admin.url.shortener",
+        "controller": "interactivesolutions\\honeycomburlshortener\\app\\http\\controllers\\HCURLShortenerController",
+        "actions": [
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
+        ],
+        "actionsApps": [
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_delete",
+          "interactivesolutions_honeycomb_url_shortener_url_shortener_force_delete"
+        ]
+      }
+    ],
+    "rolesActions": {
+      "project-admin": [
+        "interactivesolutions_honeycomb_url_shortener_url_shortener_list",
+        "interactivesolutions_honeycomb_url_shortener_url_shortener_create",
+        "interactivesolutions_honeycomb_url_shortener_url_shortener_update",
+        "interactivesolutions_honeycomb_url_shortener_url_shortener_delete"
+      ]
+    }
+  }
 }

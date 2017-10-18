@@ -2,7 +2,7 @@
 
 use DB;
 use Illuminate\Database\Eloquent\Builder;
-use interactivesolutions\honeycombcore\http\controllers\HCBaseController;
+use InteractiveSolutions\HoneycombCore\Http\Controllers\HCBaseController;
 use interactivesolutions\honeycomburlshortener\app\models\HCShortURL;
 use interactivesolutions\honeycomburlshortener\app\validators\HCURLShortenerValidator;
 
@@ -17,24 +17,26 @@ class HCURLShortenerController extends HCBaseController
     public function adminIndex()
     {
         $config = [
-            'title'       => trans('HCURLShortener::url_shortener.page_title'),
-            'listURL'     => route('admin.api.url.shortener'),
-            'newFormUrl'  => route('admin.api.form-manager', ['url-shortener-new']),
+            'title' => trans('HCURLShortener::url_shortener.page_title'),
+            'listURL' => route('admin.api.url.shortener'),
+            'newFormUrl' => route('admin.api.form-manager', ['url-shortener-new']),
             'editFormUrl' => route('admin.api.form-manager', ['url-shortener-edit']),
             //    'imagesUrl'   => route('resource.get', ['/']),
-            'headers'     => $this->getAdminListHeader(),
+            'headers' => $this->getAdminListHeader(),
         ];
 
-        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_create'))
+        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_create')) {
             $config['actions'][] = 'new';
+        }
 
         if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_update')) {
             $config['actions'][] = 'update';
             $config['actions'][] = 'restore';
         }
 
-        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_delete'))
+        if (auth()->user()->can('interactivesolutions_honeycomb_url_shortener_url_shortener_delete')) {
             $config['actions'][] = 'delete';
+        }
 
         $config['actions'][] = 'search';
 
@@ -49,16 +51,16 @@ class HCURLShortenerController extends HCBaseController
     public function getAdminListHeader()
     {
         return [
-            'url'           => [
-                "type"  => "text",
+            'url' => [
+                "type" => "text",
                 "label" => trans('HCURLShortener::url_shortener.url'),
             ],
             'short_url_key' => [
-                "type"  => "text",
+                "type" => "text",
                 "label" => trans('HCURLShortener::url_shortener.short_url_key'),
             ],
-            'clicks'        => [
-                "type"  => "text",
+            'clicks' => [
+                "type" => "text",
                 "label" => trans('HCURLShortener::url_shortener.clicks'),
             ],
 
@@ -73,8 +75,9 @@ class HCURLShortenerController extends HCBaseController
      */
     protected function __apiStore(array $data = null)
     {
-        if (is_null($data))
+        if (is_null($data)) {
             $data = $this->getInputData();
+        }
 
         return generateHCShortURL(array_get($data, 'record.url'), array_get($data, 'record.description'), true);
     }
@@ -145,12 +148,13 @@ class HCURLShortenerController extends HCBaseController
     {
         $with = [];
 
-        if ($select == null)
+        if ($select == null) {
             $select = HCShortURL::getFillableFields();
+        }
 
         $list = HCShortURL::with($with)->select($select)
             // add filters
-            ->where(function ($query) use ($select) {
+            ->where(function($query) use ($select) {
                 $query = $this->getRequestParameters($query, $select);
             });
 
@@ -174,12 +178,12 @@ class HCURLShortenerController extends HCBaseController
      */
     protected function searchQuery(Builder $query, string $phrase)
     {
-        return $query->where (function (Builder $query) use ($phrase) {
+        return $query->where(function(Builder $query) use ($phrase) {
             $query->where('url', 'LIKE', '%' . $phrase . '%')
-                    ->orWhere('short_url_key', 'LIKE', '%' . $phrase . '%')
-                    ->orWhere('clicks', 'LIKE', '%' . $phrase . '%')
-                    ->orWhere('url', 'LIKE', '%' . $phrase . '%');
-            });
+                ->orWhere('short_url_key', 'LIKE', '%' . $phrase . '%')
+                ->orWhere('clicks', 'LIKE', '%' . $phrase . '%')
+                ->orWhere('url', 'LIKE', '%' . $phrase . '%');
+        });
     }
 
     /**
@@ -229,8 +233,9 @@ class HCURLShortenerController extends HCBaseController
     {
         $record = HCShortURL::where('short_url_key', $shortURLKey)->first();
 
-        if (!$record)
+        if (!$record) {
             abort(404);
+        }
 
         $record->increment('clicks');
 
