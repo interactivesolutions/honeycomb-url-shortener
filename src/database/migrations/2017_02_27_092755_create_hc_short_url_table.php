@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class CreateHcShortUrlTable
+ */
 class CreateHcShortUrlTable extends Migration
 {
 
@@ -11,10 +17,10 @@ class CreateHcShortUrlTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('hc_short_url', function(Blueprint $table) {
-            $table->string('id', 36)->unique('id_UNIQUE');
+        Schema::create('hc_short_url', function (Blueprint $table) {
+            $table->string('id', 36)->unique();
             $table->integer('count', true);
             $table->string('url', 768);
             $table->string('short_url_key', 768);
@@ -33,7 +39,7 @@ class CreateHcShortUrlTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('hc_short_url');
     }
